@@ -6,4 +6,4 @@ Available functions :
 - Post/edit/delete your reviews
 - Read/Comment other's reviews
 - Read New York Times reviews
-- Receive and send private messages
+- Receive/send private messages
