@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>MyReviews</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}"/>
+	</head>
+	<body id="bodypage">
+		<div id="conteneur">
+			<div id=bar style="clear: both;">
+				<p id=leftbar>&nbsp;<span id=pointer> Menu</span></p>
+				<p id="rightbar"><a class="enter_website" href="/mail/received">Mail</a> | Connected as {{ name }} | <a class="enter_website" href="logout">Log Out</a>&nbsp;</p>
+			</div>
+			<nav>
+				<ul id="menu">
+					<li><a href="home">HomePage</a></li>
+					<li><a href="read_rv">Read our Reviews</a></li>
+					<li><a href="my_rv">My Reviews</a></li>
+					<li><a href="write_rv">Add a Review</a></li>
+					<li><a href="nytimes">NYT Reviews</a></li>
+					<li><a href="about">About us</a></li>
+				</ul>
+			</nav>
+
+			<div id="contenu">
+				<div id=titlesection>
+				<p id="ch2">New York Times Reviews</p>
+				<p>Here you'll find all of New York Times available reviews on your favorite Movies and Books</p>
+				<p>You'll have to search by Movie's title or Author's name</p>
+				<form action="/nytimes" method="POST">
+					<label>Name:  </label>	
+					<input class="page" type="text" name="name" placeholder="Film's title or author's name">
+					<button class="pagebut" type="submit">Search</button>
+				</form>
+				</div><br>
+				<div id="movies">
+					<h3>MOVIES: {{mv|length}} found</h3>
+					{% for movie in mv %}
+					<a href="{{ movie['url'] }}">{{ movie['name'] }}</a><br>
+					{% endfor %}
+				</div>
+				<br>
+				<div id="books">
+					<h3>BOOKS: {{bk|length}} found</h3>
+					{% for book in bk %}
+					<a href="{{ book['url'] }}">{{ book['name'] }}</a><br>
+					{% endfor %}
+				</div>
+			<br><br><br>
+			</div>
+			<p id="footer">This Website belongs to Audrey aka LaParticule. She did all of this on her own. Sheers! </p>
+		</div>
+		<script src="{{ url_for("static", filename="style.js") }}"></script>
+	</body>
+</html>

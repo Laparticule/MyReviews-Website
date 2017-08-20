@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Login</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}"/>
+	</head>
+	<body>
+		<div id="mydiv">
+			<h1>LOGIN</h1>
+			<div id=container>
+				<form action="/login" method="POST">
+					<label><b>Username</b></label>
+					<input class=log type="text" placeholder="Enter Username" name="account" required><br>
+					<label><b>Password</b></label>
+				   	<input class=log type="password" placeholder="Enter Password" name="password" required><br><br>
+					<button class=logbut type=submit>Log In</button>
+				</form>
+				<p id=error>{{ msg }}</p>
+				<p id=huh><a href="register">Don't have an account?</a></p>
+				<p id=huh><a href="reset">Can't remember your password?</a></p>
+				</div>
+		</div>
+	</body>
+</html>

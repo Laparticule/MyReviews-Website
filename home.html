@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>MyReviews</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}"/>
+	</head>
+	<body id="bodypage">
+		<div id="conteneur">
+			<div id=bar style="clear: both;">
+				<p id=leftbar>&nbsp;<span id=pointer>Menu</span></p>
+				<p id="rightbar"><a class="enter_website" href="/mail/received">Mail</a> | Connected as {{ name }} | <a class="enter_website" href="logout">Log Out</a>&nbsp;</p>
+			</div>
+			<nav>
+				<ul id="menu">
+					<li><a href="home">HomePage</a></li>
+					<li><a href="read_rv">Read our Reviews</a></li>
+					<li><a href="my_rv">My Reviews</a></li>
+					<li><a href="write_rv">Add a Review</a></li>
+					<li><a href="nytimes">NYT Reviews</a></li>
+					<li><a href="about">About us</a></li>
+				</ul>
+			</nav>
+
+			<div id="contenu">
+				<p id="ch2">Welcome to our blog, {{ name }}!</p>
+				<img id=soft src="{{ url_for("static", filename="relax") }}" height=300><br><br>
+				<p>Here, you will be able to read fantastic reviews from our community and from famous critics.<br> Films, books, shows, comics...You're free to review anything you want! </p>
+				<p>Relax, take a deep breath, and join in!</p>
+			<br><br><br>
+			</div>
+			<p id="footer">This Website belongs to Audrey aka LaParticule. She did all of this on her own. Sheers! </p>
+		</div>
+		<script src="{{ url_for("static", filename="style.js") }}"></script>
+	</body>
+</html>

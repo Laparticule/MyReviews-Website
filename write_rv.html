@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>MyReviews</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}"/>
+	</head>
+	<body id="bodypage">
+		<div id="conteneur">
+			<div id=bar style="clear: both;">
+				<p id=leftbar>&nbsp;<span id=pointer>Menu</span></p>
+				<p id="rightbar"><a class="enter_website" href="/mail/received">Mail</a> | Connected as {{ name }} | <a class="enter_website" href="logout">Log Out</a>&nbsp;</p>
+			</div>
+			<nav>
+				<ul id="menu">
+					<li><a href="home">HomePage</a></li>
+					<li><a href="read_rv">Read our Reviews</a></li>
+					<li><a href="my_rv">My Reviews</a></li>
+					<li><a href="write_rv">Add a Review</a></li>
+					<li><a href="nytimes">NYT Reviews</a></li>
+					<li><a href="about">About us</a></li>
+				</ul>
+			</nav>
+
+			<div id="contenu">
+				<div id=titlesection>
+				<p id="ch2">{{ name }}, Write your own review !</p>
+				</div><br>
+				<form action="/write_rv" id="rvform" method="POST">
+					<label>Specify the title of the book/movie/show: </label>
+					<input class="page" type="text" name="title" placeholder="Enter Title" required><br>
+					<label>Choose the corresponding category: </label>
+					<input class="page" type="radio" name="category" value="Book" checked>Book
+					<input class="page" type="radio" name="category" value="Movie">Movie
+					<input class="page" type="radio" name="category" value="Show">Show
+					<input class="page" type="radio" name="category" value="Other">Other<br>
+					<label>Did you like it?</label>
+					<input class="page" type="number" name="grade" placeholder="Enter your grade /10" required><br><br>
+					<label>Type in your review: </label>
+					<button class="pagebut" type="submit">Submit Review</button>
+				</form>
+				<textarea rows="10" cols="60" name="review" placeholder="Your Review here" form="rvform"></textarea>
+				<div id="movies">
+					{% for movie in mv %}
+					<a href="{{ movie['url'] }}">{{ movie['name'] }}</a><br>
+					{% endfor %}
+				</div>
+				<br>
+				<div id="books">
+					{% for book in bk %}
+					<a href="{{ book['url'] }}">{{ book['name'] }}</a><br>
+					{% endfor %}
+				</div>
+			<br><br><br>
+			</div>
+			<p id="footer">This Website belongs to Audrey aka LaParticule. She did all of this on her own. Sheers! </p>
+		</div>
+		<script src="{{ url_for("static", filename="style.js") }}"></script>
+	</body>
+</html>

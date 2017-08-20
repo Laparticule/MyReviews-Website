@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>MyReviews</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}"/>
+	</head>
+	<body id="bodypage">
+		<div id="conteneur">
+			<div id=bar style="clear: both;">
+				<p id=leftbar>&nbsp;<span id=pointer> Menu</span></p>
+				<p id="rightbar"><a class="enter_website" href="/mail/received">Mail</a> | Connected as {{ name }} | <a class="enter_website" href="logout">Log Out</a>&nbsp;</p>
+			</div>
+			<nav>
+				<ul id="menu">
+					<li><a href="../home">HomePage</a></li>
+					<li><a href="../read_rv">Read our Reviews</a></li>
+					<li><a href="../my_rv">My Reviews</a></li>
+					<li><a href="../write_rv">Add a Review</a></li>
+					<li><a href="../nytimes">NYT Reviews</a></li>
+					<li><a href="../about">About us</a></li>
+				</ul>
+			</nav>
+
+			<div id="contenu">
+				<div id="titlesection">
+				<p id=green><span id=purple>{{rev.category}}</span> | Review of <span id=big>{{rev.title}}</span> by <a href="/user_profile/{{rev.user}}">{{rev.user}}</a> | Rated <span id=big>{{rev.grade}}/10.</span></p>
+				<p class=leftalign>{{rev.content}}</p>
+				</div>
+				<div id=addcomment>
+					<form action="/comments/{{revid}}" id=comform method="POST">
+						<br><label>Write a comment on this review</label>
+						<input class=page type=text name=title placeholder=Title required>
+						<button class=pagebut type=submit>Submit</button>
+					</form>
+					<textarea rows=3 cols=70 name=content form=comform placeholder="Your comment here" required></textarea>
+				</div>
+				<p id=green>There are {{cmt|length}} comments</p><br><br>
+				{% for instance in cmt | reverse %}
+				<p id="green">Comment by <a href="/user_profile/{{ cmt.user }}">{{ instance.user }}</a> | <span id=big>{{ instance.title }}</span></p>
+				<p class="leftalign">{{ instance.content }}</p><br><br><br>
+				{% endfor %}
+			<br><br><br><br>
+			</div>
+			<p id="footer">This Website belongs to Audrey aka LaParticule. She did all of this on her own. Sheers! </p>
+		</div>
+		<script src="{{ url_for("static", filename="style.js") }}"></script>
+	</body>
+</html>
