@@ -4,6 +4,6 @@ Movies and books review website.
 Available functions :
 - Login/Logout/Register/Can't remember your password
 - Post/edit/delete your reviews
-- Read/Comment on reviews from the community
+- Read/Comment other's reviews
 - Read New York Times reviews
-- Send 'mail' to other users
+- Receive and send private messages
